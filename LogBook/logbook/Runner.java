@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 /**
@@ -759,10 +760,16 @@ public class Runner extends JFrame {
         
         //displays the planes flown in the airplanes flown menu
         showPlanesFlown();
+
         
-        
-        
-        
+        //displays the total flight hours.  
+        double hours = calc.getHours();
+        DecimalFormat form = new DecimalFormat("#.00");
+        JLabel hrs = new JLabel("" + form.format(hours));
+        hrs.setFont(new Font("Arial", 1, 30));
+        mainPanel.add(hrs);
+        hrs.setSize(200, 50);
+        hrs.setLocation(25, 80);
     }
     
     
@@ -776,10 +783,7 @@ public class Runner extends JFrame {
     	}
     	JList<String> list = new JList<String>(temp);
     	list.setBounds(100, 100, 100, 100);
-    	
-    	
     	mainPanel.add(list);
-    	
     	list.setLocation(20, 200);
     }
     
