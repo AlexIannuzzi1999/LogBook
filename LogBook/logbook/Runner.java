@@ -1074,7 +1074,7 @@ public class Runner extends JFrame {
             JLabel remarks = new JLabel(flights.get(currentIndex).getRemarks());
             mainPanel.add(remarks);
             remarks.setFont(new Font("Arial", 1, 12));
-            remarks.setSize(100, 25);
+            remarks.setSize(180, 25);
             remarks.setLocation(startX + 740, startY);
             
             
