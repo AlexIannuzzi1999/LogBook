@@ -34,6 +34,8 @@ class LinkedListTest {
         testRemoveIndex();
         setUp();
         testRemoveObj();
+        setUp();
+        testToArray();
     }
     
     /**
@@ -283,4 +285,21 @@ class LinkedListTest {
         assertFalse(iter.hasNext());
     }
 
+    
+    public void testToArray()
+    {
+    	LinkedList<String> people = new LinkedList<String>();
+        people.add("Miranda");
+        people.add("Mikalah");
+        people.add("Noah");
+        people.add("Bobby");
+        people.add("Alex");
+        Object[] arr = people.toArray();
+        assertEquals("Miranda", arr[0]);
+        
+        for (int i = 0; i < arr.length; i++)
+        {
+        	System.out.println(arr[i]);
+        }
+    }
 }

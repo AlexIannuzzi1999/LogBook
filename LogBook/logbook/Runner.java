@@ -756,6 +756,31 @@ public class Runner extends JFrame {
         f.setLocation(880, 200);
         
         mainPanel.drawing("stats", null);
+        
+        //displays the planes flown in the airplanes flown menu
+        showPlanesFlown();
+        
+        
+        
+        
+    }
+    
+    
+    private void showPlanesFlown()
+    {
+    	LinkedList<String> planes = calc.getPlanes();
+    	DefaultListModel<String> temp = new DefaultListModel<>();
+    	for (int i = 0; i < planes.getSize(); i++)
+    	{
+    		temp.addElement(planes.get(i));
+    	}
+    	JList<String> list = new JList<String>(temp);
+    	list.setBounds(100, 100, 100, 100);
+    	
+    	
+    	mainPanel.add(list);
+    	
+    	list.setLocation(20, 200);
     }
     
     /**
