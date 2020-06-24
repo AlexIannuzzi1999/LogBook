@@ -97,7 +97,7 @@ public class LinkedList<T> {
         {
             int counter = 0;
             Node<T> current = front;
-            while (counter < index)
+            while (counter <= index)
             {
                 current = current.getNext();
                 counter++;
@@ -431,4 +431,21 @@ public class LinkedList<T> {
             }
         }
     }
+    
+    
+    public String toString()
+    {
+    	String ans = "[ ";
+    	Node<T> curr = front;
+    	
+    	while (curr.getNext().getData() != null)
+    	{
+    		ans += curr.getNext().getData().toString();
+    		ans += " ";
+    		curr = curr.getNext();
+    	}
+    	ans += "]";
+    	return ans;
+    }
+    
 }

@@ -300,6 +300,14 @@ public class Flight implements Comparable {
      */
     public String toString()
     {
+    	
+    	return date.toString();
+    	
+    	
+    	
+    	
+    	
+    	/*
         String stop = "";
         for (int i = 0; i < stops.length - 1; i++)
         {
@@ -314,6 +322,7 @@ public class Flight implements Comparable {
             + xcountry + "::" + actualInstr + "::" + simInstr 
             + "::" + numInstrApp + "::" + numLand 
             + "::" + remarks + "::" + stop;
+            */
     }
 
 

@@ -118,6 +118,31 @@ public class Calculator {
     {
     	LinkedList<Flight> current = flights.clone();
     	int length = current.getSize();
+    	
+    	for (int i = 0; i < length - 1; i++)
+    	{
+    		int earlDate = i;
+    		for (int j = i + 1; j < length; j++)
+    		{
+    			if (current.get(j).getDate()
+    					.compareTo(current.get(earlDate).getDate()) > 0)
+    			{
+    				earlDate = j;
+    			}
+    		}
+    		
+    		Flight temp = current.get(earlDate);
+    		current.set(current.get(i), earlDate);
+    		current.set(temp, i);
+    	}
+    	return current;
+    }
+    
+    /*
+    public LinkedList<Flight> sortByDate()
+    {
+    	LinkedList<Flight> current = flights.clone();
+    	int length = current.getSize();
     	for (int i = 1; i < length; i++)
     	{
     		int j = i - 1;
@@ -138,6 +163,6 @@ public class Calculator {
     	}
     	return current;
     }
-    
+    */
     
 }

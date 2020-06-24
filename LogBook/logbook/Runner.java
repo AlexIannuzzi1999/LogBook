@@ -916,7 +916,7 @@ public class Runner extends JFrame {
     
     public void showPage(int num)
     {
-        LinkedList<Flight> flights = calc.getFlights();
+        LinkedList<Flight> flights = calc.sortByDate();
         int currentIndex = num * 17;
         int startX = 5;
         int startY = 125;

@@ -36,6 +36,8 @@ class LinkedListTest {
         testRemoveObj();
         setUp();
         testToArray();
+        setUp();
+        testToString();
     }
     
     /**
@@ -301,5 +303,16 @@ class LinkedListTest {
         {
         	System.out.println(arr[i]);
         }
+    }
+    
+    public void testToString()
+    {
+    	LinkedList<String> people = new LinkedList<String>();
+        people.add("Miranda");
+        people.add("Mikalah");
+        people.add("Noah");
+        people.add("Bobby");
+        people.add("Alex");
+        System.out.println(people);
     }
 }

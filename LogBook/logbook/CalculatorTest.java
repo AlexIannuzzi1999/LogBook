@@ -17,7 +17,7 @@ public class CalculatorTest {
 	private LinkedList<Flight> a;
 
 	public void setUp() throws FileNotFoundException {
-		File log = findFile("logbook.txt", new File("C:\\Users\\aiannuzzi99\\eclipse-workspace\\LogBook"));
+		File log = findFile("logbook.txt", new File("C:\\Users\\Alexander Iannuzzi\\git\\LogBook\\LogBook"));
 		FlightReader reader = new FlightReader(log);
 		this.a = reader.readFile();
 	}
@@ -39,7 +39,20 @@ public class CalculatorTest {
 	public void testSortByDate()
 	{
 		Calculator calc = new Calculator(this.a);
+
+		System.out.println("\nDisplaying the flights before running the sorting algorithm: ");
+		for (int i = 0; i < this.a.getSize(); i++)
+		{
+			System.out.println(this.a.get(i).getDate());
+		}
+		
+		
 		LinkedList<Flight> b = calc.sortByDate();
-		assertEquals("1/1/2019", a.get(0).getDate());
+		assertEquals("12/16/2015", b.get(0).getDate().toString());
+		System.out.println("\nDisplaying flights after running the sorting algorithm: ");
+		for (int i = 0; i < b.getSize(); i++)
+		{
+			System.out.println(b.get(i).getDate());
+		}
 	}
 }
