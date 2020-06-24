@@ -7,8 +7,9 @@ package logbook;
  * @version 1->5/29/19
  * @copyright Alexander Iannuzzi 5/28/19
  */
-public class Flight {
-    private String date;
+@SuppressWarnings("rawtypes")
+public class Flight implements Comparable {
+    private Date date;
     private String model;
     private String id;
     private String dep;
@@ -55,7 +56,8 @@ public class Flight {
         {
             throw new IllegalArgumentException();
         }
-        this.date = date;
+        Date dateObject = new Date(date);
+        this.date = dateObject;
         this.model = model;
         this.id = id;
         this.dep = dep;
@@ -162,9 +164,14 @@ public class Flight {
     
     //Getter methods for all of the fields.  
     
-    public String getDate()
+    public Date getDate()
     {
         return date;
+    }
+    
+    public String getDateString()
+    {
+    	return date.toString();
     }
     
     public String getModel()
@@ -308,4 +315,29 @@ public class Flight {
             + "::" + numInstrApp + "::" + numLand 
             + "::" + remarks + "::" + stop;
     }
+
+
+	@Override
+	public int compareTo(Object o) {
+		if (o.getClass() != Flight.class)
+		{
+			throw new IllegalArgumentException();
+		}
+		else
+		{
+			Flight other = (Flight)o;
+			if (other.getDate().compareTo(getDate()) > 0)
+			{
+				return 1;
+			}
+			else if (other.getDate().compareTo(getDate()) < 0)
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	}
 }

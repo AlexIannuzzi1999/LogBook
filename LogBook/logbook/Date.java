@@ -30,29 +30,36 @@ public class Date {
 		return this.year;
 	}
 	
-	public static int compareDates(Date a, Date b)
+	
+	public String toString()
 	{
-		if (a.year() < b.year())
+		return month + "/" + day + "/" + year;
+	}
+	
+	
+	public int compareTo(Date a)
+	{
+		if (a.year() > year)
 		{
 			return -1;
 		}
-		else if (a.year() > b.year())
+		else if (a.year() < year)
 		{
 			return 1;
 		}
-		else if (a.month() < b.month())
+		else if (a.month() > month)
 		{
 			return -1;
 		}
-		else if (a.month() > b.month())
+		else if (a.month() < month)
 		{
 			return 1;
 		}
-		else if (a.day() < b.day())
+		else if (a.day() > day)
 		{
 			return -1;
 		}
-		else if (a.day() > b.day())
+		else if (a.day() < day)
 		{
 			return 1;
 		}

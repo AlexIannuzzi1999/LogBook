@@ -25,16 +25,16 @@ public class DateTest {
 		assertEquals(16, e.day());
 		assertEquals(1999, e.year());
 		
-		assertEquals(-1, Date.compareDates(e, a));
-		assertEquals(1, Date.compareDates(a, e));
+		assertEquals(-1, e.compareTo(a));
+		assertEquals(1, a.compareTo(e));
 		Date f = new Date("11/17/1999");
-		assertEquals(-1, Date.compareDates(f, e));
-		assertEquals(1, Date.compareDates(e, f));
+		assertEquals(-1, f.compareTo(e));
+		assertEquals(1, e.compareTo(f));
 		Date g = new Date("12/15/1999");
-		assertEquals(-1, Date.compareDates(g, e));
-		assertEquals(1, Date.compareDates(e, g));
+		assertEquals(-1, g.compareTo(e));
+		assertEquals(1, e.compareTo(g));
 		Date h = new Date("12/16/1999");
-		assertEquals(0, Date.compareDates(e, h));
-		assertEquals(0, Date.compareDates(h, e));
+		assertEquals(0, e.compareTo(h));
+		assertEquals(0, h.compareTo(e));
 	}
 }

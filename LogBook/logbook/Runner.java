@@ -127,15 +127,15 @@ public class Runner extends JFrame {
         addFlight = new JButton("Add Flight");
         viewFlights = new JButton("Flight Log");
         stats = new JButton("Statistics");
-        certificates = new JButton("Certifications");
-        endorsements = new JButton("Endorsements");
-        personalInfo = new JButton("Pilot Info");
+        //certificates = new JButton("Certifications");
+        //endorsements = new JButton("Endorsements");
+        //personalInfo = new JButton("Pilot Info");
         panel.add(addFlight);
         panel.add(viewFlights);
         panel.add(stats);
-        panel.add(certificates);
-        panel.add(endorsements);
-        panel.add(personalInfo);
+        //panel.add(certificates);
+        //panel.add(endorsements);
+        //panel.add(personalInfo);
         panel.add(quit);
         setVisible(true);
         
@@ -901,7 +901,7 @@ public class Runner extends JFrame {
         p.setLocation(622, 100);
         q.setLocation(693, 95);
         r.setLocation(745, 95);
-        s.setLocation(935, 95);
+        s.setLocation(931, 95);
         
         System.out.println(calc.getFlights().getSize());
         for (int count = 0; count < calc.getFlights().getSize(); count++)
@@ -1028,7 +1028,7 @@ public class Runner extends JFrame {
                 break;
             }
             
-            JLabel date = new JLabel(flights.get(currentIndex).getDate());
+            JLabel date = new JLabel(flights.get(currentIndex).getDate().toString());
             mainPanel.add(date);
             date.setFont(new Font("Arial", 1, 12));
             date.setSize(100, 25);
