@@ -10,7 +10,7 @@ public class Rating {
 	{
 		rating = rate;
 		date = "No Date Provided";
-		certNumber = "No Certification Number Provided";
+		certNumber = "No Cert. Number Provided";
 		isActive = false;
 	}
 	

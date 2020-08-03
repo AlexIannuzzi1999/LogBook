@@ -871,7 +871,7 @@ public class Runner extends JFrame {
                             		{
                             			rates.get(i).setActive(false);
                             			rates.get(i).setDate("No Date Provided");
-                            			rates.get(i).setCert("No Certification Number Provided");
+                            			rates.get(i).setCert("No Cert. Number Provided");
                             			
                             		}
                             		
@@ -941,7 +941,7 @@ public class Runner extends JFrame {
         int indexCount = 0;
         int ratingCount = 0;
         int ratingX_col_one = 20;
-        int ratingX_col_two = 550;
+        int ratingX_col_two = 510;
         int yCoord1 = 480;
         int yCoord2 = 450;
         while (ratingCount < rates.getSize())
@@ -953,6 +953,19 @@ public class Runner extends JFrame {
             	mainPanel.add(rat);
             	rat.setSize(200, 15);
             	rat.setLocation(ratingX_col_one, yCoord1);
+            	
+            	JLabel dat = new JLabel(rates.get(ratingCount).getDate());
+            	dat.setFont(new Font("Arial", 1, 12));
+            	mainPanel.add(dat);
+            	dat.setSize(200, 15);
+            	dat.setLocation(ratingX_col_one + 150, yCoord1);
+            	
+            	JLabel cert = new JLabel(rates.get(ratingCount).getCert());
+            	cert.setFont(new Font("Arial", 1, 12));
+            	mainPanel.add(cert);
+            	cert.setSize(200, 15);
+            	cert.setLocation(ratingX_col_one + 275, yCoord1);
+            	
             	yCoord1 += 30;
             	indexCount++;
         	}
@@ -963,6 +976,19 @@ public class Runner extends JFrame {
             	mainPanel.add(rat);
             	rat.setSize(200, 15);
             	rat.setLocation(ratingX_col_two, yCoord2);
+            	
+            	JLabel dat = new JLabel(rates.get(ratingCount).getDate());
+            	dat.setFont(new Font("Arial", 1, 12));
+            	mainPanel.add(dat);
+            	dat.setSize(200, 15);
+            	dat.setLocation(ratingX_col_two + 150, yCoord2);
+            	
+            	JLabel cert = new JLabel(rates.get(ratingCount).getCert());
+            	cert.setFont(new Font("Arial", 1, 12));
+            	mainPanel.add(cert);
+            	cert.setSize(200, 15);
+            	cert.setLocation(ratingX_col_two + 275, yCoord2);
+            	
             	yCoord2 += 30;
             	indexCount++;
         	}
