@@ -4,10 +4,14 @@ public class Rating {
 	private String rating;
 	private String date;
 	private String certNumber;
+	private boolean isActive;
 	
 	public Rating(String rate)
 	{
 		rating = rate;
+		date = "";
+		certNumber = "";
+		isActive = false;
 	}
 	
 	public void setDate(String day)
@@ -18,6 +22,11 @@ public class Rating {
 	public void setCert(String cert)
 	{
 		certNumber = cert;
+	}
+	
+	public void setActive(boolean act)
+	{
+		isActive = act;
 	}
 	
 	public String getRating()
@@ -33,5 +42,10 @@ public class Rating {
 	public String getCert()
 	{
 		return certNumber;
+	}
+	
+	public boolean isActive()
+	{
+		return isActive;
 	}
 }

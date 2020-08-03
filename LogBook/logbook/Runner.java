@@ -797,9 +797,9 @@ public class Runner extends JFrame {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 JFrame update = new JFrame("Update Ratings");
-                update.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                update.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 update.setLayout(new BorderLayout());
-                update.setSize(350, 300);
+                update.setSize(350, 400);
                 update.setResizable(false);
                 Container cont = update.getContentPane();
                 GUIPanel pan = new GUIPanel();
@@ -822,13 +822,50 @@ public class Runner extends JFrame {
                 JButton remove = new JButton("Remove a Rating");
                 JButton add = new JButton("Add a Rating");
                 pan2.add(remove);
-//                remove.setSize(150, 25);
-//                remove.setLocation(10, 20);
                 pan2.add(add);
-//                add.setSize(125, 25);
-//                add.setLocation(180, 20);
                 
-                //create the Check Box Area
+                
+                remove.addActionListener(new ActionListener()
+                {
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                    	int begY = 50;
+                    	LinkedList<JCheckBox> boxes = new LinkedList<JCheckBox>();
+                        for (int i = 0; i < rates.getSize(); i++)
+                        {
+                        	if (rates.get(i).isActive())
+                        	{
+                        		JCheckBox a = (new JCheckBox(rates.get(i).getRating()));
+                            	a.setBounds(80, begY, 150, 20);
+                            	begY += 20;
+                            	boxes.add(a);
+                            	pan.add(a);
+                        	}
+                        }
+                        JButton saver = new JButton("Save Changes");
+                        pan.add(saver);
+                        saver.setSize(125, 25);
+                        saver.setLocation(90, 250);
+                        pan.updateUI();
+                        
+                        
+                        saver.addActionListener(new ActionListener()
+                        {
+                            @Override
+                            public void actionPerformed(ActionEvent arg0) {
+                            	for (int i = 0; i < boxes.getSize(); i++)
+                            	{
+                            		if (boxes.get(i).isSelected())
+                            		{
+                            			rates.get(i).setActive(false);
+                            		}
+                            	}
+                            	showStats();
+                            	update.dispose();
+                            }
+                        });
+                    }
+                });
                 
                 
             }
