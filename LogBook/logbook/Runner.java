@@ -775,6 +775,66 @@ public class Runner extends JFrame {
         //displays list of the 5 most recent flights
         showStatFlights();
         
+        //display ratings section
+        JButton updateRatings = new JButton("Update Ratings");
+        mainPanel.add(updateRatings);
+        updateRatings.setSize(125, 25);
+        updateRatings.setLocation(110, 430);
+        
+        LinkedList<Rating> rates = new LinkedList<Rating>();
+        rates.add(new Rating("Student Pilot"));
+        rates.add(new Rating("Sport Pilot"));
+        rates.add(new Rating("Recreational Pilot"));
+        rates.add(new Rating("Private Pilot"));
+        rates.add(new Rating("Instrucment Pilot"));
+        rates.add(new Rating("Commerical Rating"));
+        rates.add(new Rating("Flight Instructor"));
+        rates.add(new Rating("Airline Transport Pilot"));
+        rates.add(new Rating("Ground Instructor"));
+        
+        updateRatings.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                JFrame update = new JFrame("Update Ratings");
+                update.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                update.setLayout(new BorderLayout());
+                update.setSize(350, 300);
+                update.setResizable(false);
+                Container cont = update.getContentPane();
+                GUIPanel pan = new GUIPanel();
+                JPanel pan2 = new JPanel();
+                
+                pan2.setBackground(new Color(0, 0, 128));
+                cont.add(pan2, BorderLayout.NORTH);
+                
+                pan.setLayout(null);
+                pan.setBackground(new Color(250, 235, 215));
+                cont.add(pan, BorderLayout.CENTER);
+                
+                
+                update.setVisible(true);
+                pan.removeAll();
+                pan.updateUI();
+                pan.drawing("", null);
+                
+                
+                JButton remove = new JButton("Remove a Rating");
+                JButton add = new JButton("Add a Rating");
+                pan2.add(remove);
+//                remove.setSize(150, 25);
+//                remove.setLocation(10, 20);
+                pan2.add(add);
+//                add.setSize(125, 25);
+//                add.setLocation(180, 20);
+                
+                //create the Check Box Area
+                
+                
+            }
+        });
+        
+        
     }
     
     private void showStatFlights()
