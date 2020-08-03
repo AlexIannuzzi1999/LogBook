@@ -102,7 +102,7 @@ public class Runner extends JFrame {
      */
     public Runner(File file) throws FileNotFoundException
     {
-        super("LogBook");
+        super("Pilot Log Book");
         this.log = file;
         reader = new FlightReader(file);
         LinkedList<Flight> logs = reader.readFile();
@@ -176,7 +176,7 @@ public class Runner extends JFrame {
             }
         });
         
-        addFlight();
+        showStats();
     }
     
     /**
@@ -770,6 +770,70 @@ public class Runner extends JFrame {
         mainPanel.add(hrs);
         hrs.setSize(200, 50);
         hrs.setLocation(25, 80);
+        
+        
+        //displays list of the 5 most recent flights
+        showStatFlights();
+        
+    }
+    
+    private void showStatFlights()
+    {
+    	LinkedList<Flight> fli = calc.sortByDate();
+    	int dateLocX = 280;
+    	int aircraftLocX = 400;
+    	int depLocX = 515;
+    	int arrLocX = 640;
+    	int timeLocX = 775;
+    	int regLocX = 885;
+    	int locY = 235;
+        for (int i = 0; i < 5; i++)
+        {
+        	//show date
+        	JLabel date = new JLabel(fli.get(i).getDateString());
+        	date.setFont(new Font("Arial", 1, 15));
+        	mainPanel.add(date);
+        	date.setSize(100, 15);
+        	date.setLocation(dateLocX, locY);
+        	
+        	//show aircraft
+        	JLabel air = new JLabel(fli.get(i).getModel());
+        	air.setFont(new Font("Arial", 1, 15));
+        	mainPanel.add(air);
+        	air.setSize(100, 15);
+        	air.setLocation(aircraftLocX, locY);
+        	
+        	//show DEP
+        	JLabel dep = new JLabel(fli.get(i).getDep());
+        	dep.setFont(new Font("Arial", 1, 15));
+        	mainPanel.add(dep);
+        	dep.setSize(100, 15);
+        	dep.setLocation(depLocX, locY);
+        	
+        	//show ARR
+        	JLabel arr = new JLabel(fli.get(i).getArr());
+        	arr.setFont(new Font("Arial", 1, 15));
+        	mainPanel.add(arr);
+        	arr.setSize(100, 15);
+        	arr.setLocation(arrLocX, locY);
+        	
+        	//show time
+        	JLabel time = new JLabel("" + fli.get(i).getTotalTime());
+        	time.setFont(new Font("Arial", 1, 15));
+        	mainPanel.add(time);
+        	time.setSize(100, 15);
+        	time.setLocation(timeLocX, locY);
+        	
+        	//show registration
+        	JLabel reg = new JLabel(fli.get(i).getId());
+        	reg.setFont(new Font("Arial", 1, 15));
+        	mainPanel.add(reg);
+        	reg.setSize(100, 15);
+        	reg.setLocation(regLocX, locY);
+        	
+        	
+        	locY += 40;
+        }
     }
     
     

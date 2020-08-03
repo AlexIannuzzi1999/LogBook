@@ -137,32 +137,8 @@ public class Calculator {
     	}
     	return current;
     }
-    
-    /*
-    public LinkedList<Flight> sortByDate()
-    {
-    	LinkedList<Flight> current = flights.clone();
-    	int length = current.getSize();
-    	for (int i = 1; i < length; i++)
-    	{
-    		int j = i - 1;
-    		Date curr = new Date(current.get(i).getDate().toString());
-    		Date curr2 = new Date(current.get(j).getDate().toString());
-    		
-    		while (j >= 0 && curr2.compareTo(curr) == 1)
-    		{
-    			Flight temp = current.get(j);
-    			current.set(temp, j + 1);
-    			j--;
-    			if (j >= 0)
-    			{
-    				curr2 = new Date(current.get(j).getDate().toString());
-    			}
-    		}
-    		current.set(current.get(i), j + 1);
-    	}
-    	return current;
-    }
-    */
-    
 }
+
+
+
+
