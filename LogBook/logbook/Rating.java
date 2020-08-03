@@ -9,8 +9,8 @@ public class Rating {
 	public Rating(String rate)
 	{
 		rating = rate;
-		date = "";
-		certNumber = "";
+		date = "No Date Provided";
+		certNumber = "No Certification Number Provided";
 		isActive = false;
 	}
 	
@@ -47,5 +47,10 @@ public class Rating {
 	public boolean isActive()
 	{
 		return isActive;
+	}
+	
+	public String toString()
+	{
+		return rating + " - " + isActive;
 	}
 }

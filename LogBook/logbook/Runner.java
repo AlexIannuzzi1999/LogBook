@@ -33,6 +33,7 @@ public class Runner extends JFrame {
     private FlightReader reader;
     private File log;
     private Calculator calc;
+    private LinkedList<Rating> rates;
     
     /**
      * Runs the Project.  
@@ -138,6 +139,21 @@ public class Runner extends JFrame {
         //panel.add(personalInfo);
         panel.add(quit);
         setVisible(true);
+        
+        
+        rates = new LinkedList<Rating>();
+        rates.add(new Rating("Student Pilot"));
+        rates.add(new Rating("Sport Pilot"));
+        rates.add(new Rating("Recreational Pilot"));
+        rates.add(new Rating("Private Pilot"));
+        rates.add(new Rating("Instrument Pilot"));
+        rates.add(new Rating("Commerical Rating"));
+        rates.add(new Rating("Flight Instructor"));
+        rates.add(new Rating("Airline Transport Pilot"));
+        rates.add(new Rating("Ground Instructor"));
+        
+        
+        
         
         quit.addActionListener(new ActionListener()
             {
@@ -692,6 +708,7 @@ public class Runner extends JFrame {
      */
     public void showStats()
     {
+    	System.out.println(rates);
         mainPanel.removeAll();
         mainPanel.updateUI();
         JLabel thing = new JLabel("Statistics Menu");
@@ -781,16 +798,7 @@ public class Runner extends JFrame {
         updateRatings.setSize(125, 25);
         updateRatings.setLocation(110, 430);
         
-        LinkedList<Rating> rates = new LinkedList<Rating>();
-        rates.add(new Rating("Student Pilot"));
-        rates.add(new Rating("Sport Pilot"));
-        rates.add(new Rating("Recreational Pilot"));
-        rates.add(new Rating("Private Pilot"));
-        rates.add(new Rating("Instrucment Pilot"));
-        rates.add(new Rating("Commerical Rating"));
-        rates.add(new Rating("Flight Instructor"));
-        rates.add(new Rating("Airline Transport Pilot"));
-        rates.add(new Rating("Ground Instructor"));
+        
         
         updateRatings.addActionListener(new ActionListener()
         {
@@ -829,18 +837,22 @@ public class Runner extends JFrame {
                 {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
+                    	pan.removeAll();
+                    	pan.updateUI();
+                    	JLabel title = new JLabel("Remove Rating");
+                    	title.setFont(new Font("Arial", 1, 15));
+                    	pan.add(title);
+                    	title.setSize(200, 15);
+                        title.setLocation(105, 15);
                     	int begY = 50;
                     	LinkedList<JCheckBox> boxes = new LinkedList<JCheckBox>();
                         for (int i = 0; i < rates.getSize(); i++)
                         {
-                        	if (rates.get(i).isActive())
-                        	{
-                        		JCheckBox a = (new JCheckBox(rates.get(i).getRating()));
-                            	a.setBounds(80, begY, 150, 20);
-                            	begY += 20;
-                            	boxes.add(a);
-                            	pan.add(a);
-                        	}
+                        	JCheckBox a = (new JCheckBox(rates.get(i).getRating()));
+                        	a.setBounds(80, begY, 150, 20);
+                        	begY += 20;
+                        	boxes.add(a);
+                        	pan.add(a);
                         }
                         JButton saver = new JButton("Save Changes");
                         pan.add(saver);
@@ -858,6 +870,57 @@ public class Runner extends JFrame {
                             		if (boxes.get(i).isSelected())
                             		{
                             			rates.get(i).setActive(false);
+                            			rates.get(i).setDate("No Date Provided");
+                            			rates.get(i).setCert("No Certification Number Provided");
+                            			
+                            		}
+                            		
+                            	}
+                            	showStats();
+                            	update.dispose();
+                            }
+                        });
+                    }
+                });
+                //End of the remove rating functionality.  
+                
+                add.addActionListener(new ActionListener()
+                {
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                    	pan.removeAll();
+                    	pan.updateUI();
+                    	JLabel title = new JLabel("Add Rating");
+                    	title.setFont(new Font("Arial", 1, 15));
+                    	pan.add(title);
+                    	title.setSize(200, 15);
+                        title.setLocation(105, 15);
+                    	int begY = 50;
+                    	LinkedList<JCheckBox> boxes = new LinkedList<JCheckBox>();
+                        for (int i = 0; i < rates.getSize(); i++)
+                        {
+                        	JCheckBox a = (new JCheckBox(rates.get(i).getRating()));
+                        	a.setBounds(80, begY, 150, 20);
+                        	begY += 20;
+                        	boxes.add(a);
+                        	pan.add(a);
+                        }
+                        JButton saver2 = new JButton("Save Changes");
+                        pan.add(saver2);
+                        saver2.setSize(125, 25);
+                        saver2.setLocation(90, 250);
+                        pan.updateUI();
+                        
+                        
+                        saver2.addActionListener(new ActionListener()
+                        {
+                            @Override
+                            public void actionPerformed(ActionEvent arg0) {
+                            	for (int i = 0; i < boxes.getSize(); i++)
+                            	{
+                            		if (boxes.get(i).isSelected())
+                            		{
+                            			rates.get(i).setActive(true);
                             		}
                             	}
                             	showStats();
@@ -866,11 +929,45 @@ public class Runner extends JFrame {
                         });
                     }
                 });
-                
-                
+                //end of the add rating functionality.  
             }
         });
         
+        //end of the update JFrame window code
+        
+        //Display Ratings
+        //4 ratings in first column and 5 ratings in second column
+        
+        int indexCount = 0;
+        int ratingCount = 0;
+        int ratingX_col_one = 20;
+        int ratingX_col_two = 550;
+        int yCoord1 = 480;
+        int yCoord2 = 450;
+        while (ratingCount < rates.getSize())
+        {
+        	if (indexCount < 4 && rates.get(ratingCount).isActive())
+        	{
+        		JLabel rat = new JLabel(rates.get(ratingCount).getRating());
+        		rat.setFont(new Font("Arial", 1, 12));
+            	mainPanel.add(rat);
+            	rat.setSize(200, 15);
+            	rat.setLocation(ratingX_col_one, yCoord1);
+            	yCoord1 += 30;
+            	indexCount++;
+        	}
+        	else if (rates.get(ratingCount).isActive())
+        	{
+        		JLabel rat = new JLabel(rates.get(ratingCount).getRating());
+        		rat.setFont(new Font("Arial", 1, 12));
+            	mainPanel.add(rat);
+            	rat.setSize(200, 15);
+            	rat.setLocation(ratingX_col_two, yCoord2);
+            	yCoord2 += 30;
+            	indexCount++;
+        	}
+        	ratingCount++;
+        }
         
     }
     

@@ -39,9 +39,8 @@ public class GUIPanel extends JPanel {
             g.drawLine(250, 160, 250, 420);
             g.drawLine(0, 420, 1000, 420);
             g.drawLine(250, 420, 350, 420);
-            //g.drawLine(350, 420, 350, 700);
+            g.drawLine(500, 420, 500, 700);
             g.drawLine(400, 0, 400, 160);
-            //g.drawLine(800, 420, 800, 700);
             
             //Grid lines for the most recent flights
             g.drawLine(250, 220, 1000, 220);
